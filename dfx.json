@@ -1,30 +1,12 @@
 {
   "canisters": {
     "rust_counter": {
-      "main": "src/rust_counter/main.mo",
-      "type": "motoko"
-    },
-    "rust_counter_assets": {
-      "dependencies": [
-        "rust_counter"
-      ],
-      "frontend": {
-        "entrypoint": "src/rust_counter_assets/src/index.html"
-      },
-      "source": [
-        "src/rust_counter_assets/assets",
-        "dist/rust_counter_assets/"
-      ],
-      "type": "assets"
+      "build": "cargo build --target wasm32-unknown-unknown --package  rust_counter --release",
+      "candid": "src/rust_counter/counter.did",
+      "wasm": "target/wasm32-unknown-unknown/release/rust_counter.wasm",
+      "type": "custom"
     }
   },
-  "defaults": {
-    "build": {
-      "args": "",
-      "packtool": ""
-    }
-  },
-  "dfx": "0.8.0",
   "networks": {
     "local": {
       "bind": "127.0.0.1:8000",
